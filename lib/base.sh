@@ -33,8 +33,16 @@ alias abtrycmd='ABSTRICT=0 abreqcmd'
 # So ugly...
 
 abloadlib(){
-	[ -f $ABBLPREFIX/$1.sh ] || return 127
-	. $ABBLPREFIX/$1.sh || return $?
+	local IFS
+	OLD_IFS=$IFS
+	IFS=:
+	for i in $ABBL_LIB_PATH
+	do
+		[ -f $i/$1.sh ] && break
+	done
+	IFS=OLD_IFS
+	[ -f $i/$1.sh ] || return 1
+	. $i/$1.sh || return $?
 	ABLIBS+="$1|"
 	abinfo "Loaded library $1" 1>&2
 }
