@@ -1,2 +1,2 @@
-test/test-abbl-invoke/main.sh
 abbl-invoke
+test/*/result.txt

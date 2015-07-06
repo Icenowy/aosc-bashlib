@@ -1,0 +1,5 @@
+echo "SATISFIED BASE_SH_INVOKED"
+if [ "x$ABBL_LIB_PATH" = "x$PWD/lib" ]
+then
+	echo "SATISFIED ABBL_LIB_PATH_SET"
+fi
